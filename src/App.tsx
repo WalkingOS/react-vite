@@ -1,4 +1,10 @@
 import './App.scss'
+import { Refrigerator } from './Examples/ConditionalRendering'
+import UserInfoForm, {
+  CounterButton,
+  StringStateExample,
+  ToggleButton,
+} from './Examples/Hooks/useStateExample'
 import Button, { ButtonChild } from './components/Button'
 
 const Foo = () => {
@@ -17,17 +23,17 @@ const IterateApp = (): JSX.Element /** HTMLElement after compiling */ => {
 
 const App = () => {
   return (
-    <div>
-      <Button />
-
-      <button className="">blabalba</button>
-
-      <ButtonChild>
-        <div>Div Label</div>
-      </ButtonChild>
-
-      <ButtonChild className="foo">TEST</ButtonChild>
-    </div>
+    <center>
+      <hr></hr>
+      {/*       <Refrigerator
+        drinks={['water', 'water']}
+        eggs={5}
+        fruit={['apple', 'banana']}
+        ketchup={true}
+      /> */}
+      <CounterButton />
+      <hr></hr>
+    </center>
   )
 }
 
