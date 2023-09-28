@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import { MyFirstUseEffect } from './useHookExample'
 
 export const CounterButton = () => {
   // Initialize a state variable called "count" with an initial value of 0
   const [count, setCount] = useState(0)
-
-  console.log('fasdf')
 
   return (
     <>
@@ -27,6 +26,41 @@ export const CounterButton = () => {
       {/** Reset button */}
 
       {/** prev button */}
+    </>
+  )
+}
+
+export const AddComponent = () => {
+  const [count, setCount] = useState(0)
+
+  console.log('log')
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          if (count > 0) setCount(count - 1)
+        }}
+      >
+        -
+      </button>
+      <span>Count: {count}</span>
+
+      <button
+        onClick={() => {
+          setCount(count + 1)
+        }}
+      >
+        +
+      </button>
+
+      {Array(count)
+        .fill(null)
+        .map((_, i) => (
+          <div key={i}>
+            <MyFirstUseEffect />
+          </div>
+        ))}
     </>
   )
 }

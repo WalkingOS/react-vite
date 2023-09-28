@@ -1,6 +1,12 @@
 import './App.scss'
 import { Refrigerator } from './Examples/ConditionalRendering'
+import {
+  FetchExample,
+  MousePosition,
+  MyFirstUseEffect,
+} from './Examples/Hooks/useHookExample'
 import UserInfoForm, {
+  AddComponent,
   CounterButton,
   StringStateExample,
   ToggleButton,
@@ -31,7 +37,7 @@ const App = () => {
         fruit={['apple', 'banana']}
         ketchup={true}
       /> */}
-      <CounterButton />
+      <FetchExample />
       <hr></hr>
     </center>
   )

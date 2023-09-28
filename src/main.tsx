@@ -5,7 +5,7 @@ import './index.scss'
 
 // initializes a React application and renders the App component into an HTML element with the id "root."
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <>
     <App />
-  </React.StrictMode>,
+  </>,
 )
