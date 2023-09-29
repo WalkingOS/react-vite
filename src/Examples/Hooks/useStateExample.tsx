@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MyFirstUseEffect } from './useHookExample'
+import { MyFirstUseEffect } from './useEffectExample'
 
 export const CounterButton = () => {
   // Initialize a state variable called "count" with an initial value of 0

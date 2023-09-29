@@ -4,7 +4,8 @@ import {
   FetchExample,
   MousePosition,
   MyFirstUseEffect,
-} from './Examples/Hooks/useHookExample'
+} from './Examples/Hooks/useEffectExample'
+import { MyFirstRef } from './Examples/Hooks/useRefExample'
 import UserInfoForm, {
   AddComponent,
   CounterButton,
@@ -37,7 +38,7 @@ const App = () => {
         fruit={['apple', 'banana']}
         ketchup={true}
       /> */}
-      <FetchExample />
+      <MyFirstRef />
       <hr></hr>
     </center>
   )
