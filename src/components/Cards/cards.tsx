@@ -1,6 +1,6 @@
 import { ArticlesData } from "../../main";
 
-const Cards = ({articles}): JSX.Element => {
+const Cards = ({articles}: {articles: ArticlesData[]}): JSX.Element => {
     return <>
         {
             articles ? (

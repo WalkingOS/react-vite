@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.scss'
 import Cardlist from './components/Cardlist/cardlist.tsx';
 
@@ -123,12 +122,6 @@ export const articles: ArticlesData[] = [
 ];
 
 // initializes a React application and renders the App component into an HTML element with the id "root."
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <>
-    <App />
-  </>,
-)
-
 ReactDOM.createRoot(document.getElementById("article__app")!).render(
   <Cardlist />
 )

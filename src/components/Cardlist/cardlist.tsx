@@ -9,9 +9,20 @@ const Cardlist = (): JSX.Element => {
     const [filteredArticles, setFilteredArticles] = useState(articles);
     const inputTextRef = useRef<HTMLInputElement | null>(null);
     
+    const handleInputChange = () => {
+        inputTextRef.current ? setKeyword(inputTextRef.current.value) : setKeyword("");
+    }
+    
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        inputTextRef.current ? setKeyword(inputTextRef.current.value) : setKeyword("");
+        handleInputChange();
+    }
+
+    const handleReset = () => {
+        if (inputTextRef.current) {
+            inputTextRef.current.value = "";
+            setKeyword("");
+        }
     }
 
     const search = (articles: ArticlesData[], keyword: string): ArticlesData[] => {
@@ -40,8 +51,8 @@ const Cardlist = (): JSX.Element => {
                     <div className="actionBar-container">
                         <form id="actionBar__search" onSubmit={handleSubmit}>
                             <label htmlFor="search__field">Artikel durchsuchen</label>
-                            <input type="text" id="search__field" placeholder="Suchbegriff eingeben" ref={inputTextRef} />
-                            <input type="submit" id="search__reset" value="Suchen" />
+                            <input type="text" id="search__field" placeholder="Suchbegriff eingeben" ref={inputTextRef} onChange={handleInputChange}/>
+                            <input type="button" id="search__reset" value="Zur&uuml;cksetzen" onClick={handleReset}/>
                         </form>
                     </div>
                 </div>

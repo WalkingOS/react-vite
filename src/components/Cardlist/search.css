@@ -22,7 +22,7 @@
     color: #555;
 }
 
-#search__reset {
+#search__reset, #search__submit {
     padding: 5px;
     color: #fff;
     background-color: #2222ef;
