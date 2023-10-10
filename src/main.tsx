@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.scss'
 import Cardlist from './components/Cardlist/cardlist.tsx';
-import "./components/Search/search.css"
 
 export interface ArticlesData {
   id: string, 

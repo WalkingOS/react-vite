@@ -1,8 +1,6 @@
 import { ArticlesData } from "../../main";
-import { articles } from "../../main";
 
-const Cards = (): JSX.Element => {
-
+const Cards = ({articles}): JSX.Element => {
     return <>
         {
             articles ? (
