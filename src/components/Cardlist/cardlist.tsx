@@ -9,7 +9,7 @@ const ArticlesModule = (): JSX.Element => {
     const [keyword, setKeyword] = useState("");
 
     const search = (articles: ArticlesData[], keyword: string): ArticlesData[] => {
-        if (!keyword || keyword === "") {
+        if (!keyword) {
             return articles;
         } 
         
@@ -28,20 +28,18 @@ const ArticlesModule = (): JSX.Element => {
             <div className="container">
                 <div className="actionBar">
                     <div className="actionBar-container">
-                        <Search keyword={setKeyword}/> 
+                        <Search onKeywordChange={setKeyword}/> 
                     </div>
                 </div>
             </div>
 
             <div className="container">
                 <div id="articles">
-                    <div id="app">
                         { 
                             articles ? (
                                 <Cards articles={search(articles, keyword)}/>
                             ) : "Loading..."
                         }
-                    </div>
                 </div>
             </div>
         </>

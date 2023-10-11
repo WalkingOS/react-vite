@@ -1,10 +1,10 @@
 import { ArticlesData } from "../../main";
 
 const Cards = ({articles}: {articles: ArticlesData[]}): JSX.Element => {
-    return <ul>
+    return <ul id="app">
         {
             articles.map((article: ArticlesData) => {
-                    return <li>
+                    return <li className="card" key={article.id}>
                         <Card {...article} key={article.id} />
                     </li>;
             })
@@ -16,7 +16,7 @@ const Card = (props: ArticlesData): JSX.Element => {
     const {author, image, dateAdded, title} = props;
 
     return (
-    <div className="card">
+    <div>
     <img className="card__image" src={image.url}/>
     <div className="card__info">
         <div className="card__container">
