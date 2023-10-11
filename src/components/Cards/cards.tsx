@@ -1,15 +1,15 @@
 import { ArticlesData } from "../../main";
 
 const Cards = ({articles}: {articles: ArticlesData[]}): JSX.Element => {
-    return <>
+    return <ul>
         {
-            articles ? (
-                articles.map((article: ArticlesData) => {
-                    return <Card {...article} key={article.id} />;
-                })
-            ) : "Loading..."
+            articles.map((article: ArticlesData) => {
+                    return <li>
+                        <Card {...article} key={article.id} />
+                    </li>;
+            })
         }
-    </>
+    </ul>
 }
 
 const Card = (props: ArticlesData): JSX.Element => {

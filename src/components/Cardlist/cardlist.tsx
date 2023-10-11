@@ -1,42 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Cards from "../Cards/cards";
 import { ArticlesData, articles } from "../../main";
 import "./cardlist.css";
 import "./search.css";
+import Search from "../Search/search.tsx";
 
-const Cardlist = (): JSX.Element => {
+const ArticlesModule = (): JSX.Element => {
     const [keyword, setKeyword] = useState("");
-    const [filteredArticles, setFilteredArticles] = useState(articles);
-    const inputTextRef = useRef<HTMLInputElement | null>(null);
-    
-    const handleInputChange = () => {
-        inputTextRef.current ? setKeyword(inputTextRef.current.value) : setKeyword("");
-    }
-    
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        handleInputChange();
-    }
-
-    const handleReset = () => {
-        if (inputTextRef.current) {
-            inputTextRef.current.value = "";
-            setKeyword("");
-        }
-    }
 
     const search = (articles: ArticlesData[], keyword: string): ArticlesData[] => {
-        if (!keyword) {
+        if (!keyword || keyword === "") {
             return articles;
         } 
         
         return articles.filter(article => (
             article.title.toLowerCase().includes(keyword.toLowerCase())))
     }
-
-    useEffect( () => {
-        setFilteredArticles(search(articles, keyword));
-    }, [keyword]);
 
     return (
         <>
@@ -49,11 +28,7 @@ const Cardlist = (): JSX.Element => {
             <div className="container">
                 <div className="actionBar">
                     <div className="actionBar-container">
-                        <form id="actionBar__search" onSubmit={handleSubmit}>
-                            <label htmlFor="search__field">Artikel durchsuchen</label>
-                            <input type="text" id="search__field" placeholder="Suchbegriff eingeben" ref={inputTextRef} onChange={handleInputChange}/>
-                            <input type="button" id="search__reset" value="Zur&uuml;cksetzen" onClick={handleReset}/>
-                        </form>
+                        <Search keyword={setKeyword}/> 
                     </div>
                 </div>
             </div>
@@ -61,7 +36,11 @@ const Cardlist = (): JSX.Element => {
             <div className="container">
                 <div id="articles">
                     <div id="app">
-                        <Cards articles={filteredArticles}/>
+                        { 
+                            articles ? (
+                                <Cards articles={search(articles, keyword)}/>
+                            ) : "Loading..."
+                        }
                     </div>
                 </div>
             </div>
@@ -69,4 +48,4 @@ const Cardlist = (): JSX.Element => {
     )
 }
 
-export default Cardlist;
+export default ArticlesModule;

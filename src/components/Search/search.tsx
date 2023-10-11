@@ -1,36 +1,25 @@
-import { useEffect, useState } from "react";
-import "./search.css"
-import { ArticlesData, articles } from "../../main";
+import React, { useRef } from "react";
+// import { ArticlesData, articles } from "../../main";
 
-const Search = () => {
-    const [keyword, setKeyword] = useState("");
+const Search = ({keyword}: {keyword: (x: string) => void}) => {
+    const textInputRef = useRef<HTMLInputElement | null>(null);
 
-    const searchArticles = (articles: ArticlesData[], keyword: string) => {
-        if (!keyword) {
-            return articles;
-        }
-                
-        return articles.filter(article => (
-                    article.title.toLowerCase().includes(keyword.toLowerCase())))
-                    // .filter(element => {
-                    //     if (element !== undefined) 
-                    //         return element;
-                    
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
     }
 
-    useEffect( () => {
-        searchArticles(articles, keyword);
-    }, [keyword]);
+    const handleReset = () => {
+        if(textInputRef.current) textInputRef.current.value = "";
+        keyword("");
+    }
 
     return <>
-        <form id="actionBar__search" >
+        <form id="actionBar__search" onSubmit={handleSubmit}>
             <label htmlFor="search__field">Artikel durchsuchen</label>
-            <input type="text" id="search__field" placeholder="Suchbegriff eingeben" onChange={ (e) => { setKeyword(e.target.value); } }/>
-            <input type="submit" id="search__submit" value="Suchen" />
+            <input type="text" id="search__field" placeholder="Suchbegriff eingeben" ref={textInputRef} onChange={(event) => keyword(event?.target.value)}/>
+            <input type="button" id="search__reset" value="Zur&uuml;cksetzen" onClick={handleReset}/>
         </form>
     </>
 }
 
 export default Search;
-
-console.log(keyword);

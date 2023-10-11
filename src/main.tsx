@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import './index.scss'
-import Cardlist from './components/Cardlist/cardlist.tsx';
+import ArticlesModule from './components/Cardlist/cardlist.tsx';
 
 export interface ArticlesData {
   id: string, 
@@ -123,5 +123,5 @@ export const articles: ArticlesData[] = [
 
 // initializes a React application and renders the App component into an HTML element with the id "root."
 ReactDOM.createRoot(document.getElementById("article__app")!).render(
-  <Cardlist />
+  <ArticlesModule />
 )
