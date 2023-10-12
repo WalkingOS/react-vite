@@ -1,21 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cards from "../Cards/cards";
-import { ArticlesData, articles } from "../../main";
+import { ArticlesData } from "../../main";
 import "./cardlist.css";
 import "./search.css";
 import Search from "../Search/search.tsx";
 
 const ArticlesModule = (): JSX.Element => {
     const [keyword, setKeyword] = useState("");
+    const [articles, setArticles] = useState<ArticlesData[] | null>(null);
+    const [loading, setLoading] = useState(true);
 
     const search = (articles: ArticlesData[], keyword: string): ArticlesData[] => {
-        if (!keyword) {
+        if (!keyword && articles) {
             return articles;
         } 
         
         return articles.filter(article => (
             article.title.toLowerCase().includes(keyword.toLowerCase())))
     }
+
+    useEffect(() => {
+        const fetchArticles = async (url: string) => {
+            try {
+                const response = await fetch(url);
+                const result = await response.json();
+                const articlePromise = result.record;
+                setArticles(articlePromise.record);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching articles: ", error);
+            }
+        }
+
+        fetchArticles("https://api.jsonbin.io/v3/qs/6526ac7012a5d376598a57fe");
+    }, [])
 
     return (
         <>
@@ -35,10 +53,10 @@ const ArticlesModule = (): JSX.Element => {
 
             <div className="container">
                 <div id="articles">
-                        { 
-                            articles ? (
+                        {
+                            (!loading && articles) ? (
                                 <Cards articles={search(articles, keyword)}/>
-                            ) : "Loading..."
+                            ) : <div className="articles-loading">Loading...</div>
                         }
                 </div>
             </div>
