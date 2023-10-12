@@ -1,0 +1,42 @@
+.actionBar-container {
+    position: absolute;
+    top: -28px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    box-shadow: 0 3px 3px #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#actionBar__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    column-gap: 10px;
+}
+
+#search__field {
+    width: 100%;
+    color: #555;
+}
+
+#search__reset, #search__submit {
+    padding: 5px;
+    color: #fff;
+    background-color: #2222ef;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search__submit:hover {
+    cursor: pointer;
+    background-color: #086eb3;
+    transition: 0.5s;
+}
+
+label {
+    display: none;
+}

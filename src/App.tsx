@@ -39,6 +39,7 @@ const App = () => {
         ketchup={true}
       /> */}
       <MyFirstRef />
+      <FetchExample />
       <hr></hr>
     </center>
   )
